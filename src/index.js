@@ -6,23 +6,23 @@ import VideoDetail from './components/video_detail';
 import YTSearch from 'youtube-api-search';
 const API_KEY = 'AIzaSyCaCiBv4yG2OC5PdaX1s5Mit9WC3psn7I4';
 
-
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			videos: [],
-			selectedVideo: null
+			selectedVideo: null,
+			key: []
 		};
 
 		YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
 			this.setState({
 				videos: videos,
-				selectedVideo: videos[2]
+				selectedVideo: videos[0]
 			});
 
-			console.log(videos[1]);
+			// console.log(videos[1]);
 });
 
 	}
@@ -34,13 +34,12 @@ class App extends Component {
 			  <VideoDetail video={this.state.selectedVideo} />
 			  <VideoList 
 			  onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+			  key={this.state.videos.etag}
 			  videos={this.state.videos} />
 			</div>
 			);
 	}
 }
-
-
 
 ReactDOM.render(<App />, document.querySelector('.container'));
 
@@ -72,3 +71,5 @@ ReactDOM.render(<App />, document.querySelector('.container'));
 // arr.map(function(number) {return number * 3});
 // [3, 6, 9]
 
+
+// function onVideoSelect(selectedVideo) { return _this2.setState({ selectedVideo: selectedVideo });

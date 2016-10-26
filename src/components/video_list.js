@@ -2,6 +2,7 @@ import React from 'react';
 import VideoListItem from './video_list_item';
 
 const VideoList = (props) => {
+	// console.log(props); << returns array of 5 items
 	const videoItems = props.videos.map((video) => {
 		return  (
 			<VideoListItem 
@@ -10,9 +11,9 @@ const VideoList = (props) => {
 			video={video} />
 			);
 	});
-	
+	// Below returns the list of vids
 	return (
-		<ul className="col-md-4 list-group">
+		<ul className="col-md-8 list-group">
 		{videoItems}
 		</ul>
 		);
